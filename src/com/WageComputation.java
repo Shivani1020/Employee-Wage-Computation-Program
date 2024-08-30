@@ -6,8 +6,10 @@ public class WageComputation {
 	
 	static final int wage_per_hour = 20;
 	static final int full_day_hour = 8;
-	static final int part_time_wage = 4;
+	static final int part_time_hour = 4;
 	static final int working_day_per_month = 20;
+	static final int max_working_day = 20;
+	static final int max_working_hour = 100;
 	
 	static int getAttendence(){
 		Random random = new Random();
@@ -19,48 +21,55 @@ public class WageComputation {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("--------------------------------------------------------------");
-		System.out.println("~~~~~~~~~Welcome to Employee Wage Computation Program~~~~~~~~~");
-		System.out.println("--------------------------------------------------------------");
+		System.out.println("\t--------------------------------------------------------------");
+		System.out.println("\t~~~~~~~~~Welcome to Employee Wage Computation Program~~~~~~~~~");
+		System.out.println("\t--------------------------------------------------------------");
 		int total_wage = 0;
+		int totalWorkingDays = 0;
+		int totalWorkingHours = 0;
 		
-		
-		for(int day=1; day<=working_day_per_month; day++)
-		{
-			int dailywage =0;
-			int attendence = getAttendence();  // 2 indicates that either 0 or 1 is generated.
-			switch(attendence)
+		while(totalWorkingDays < max_working_day && totalWorkingHours < max_working_hour)
 			{
-			case 1:
-			{
-				//System.out.println("Employee is Present for Full time.");
-				dailywage = calculateDailyWage(full_day_hour);
-				System.out.println("Day "+day+": Employee present for Full-time and wage for the day: $"+dailywage );
+				int attendence = getAttendence(); // 2 indicates that either 0 or 1 is generated.
+				totalWorkingDays++;
+				int dailywage =0;
+				int workedhours = 0;
 				
-				
-			}
-			break;
-			
-			case 2:
-			{
-				//System.out.println("Employee is present for Part time");
-				dailywage = calculateDailyWage(part_time_wage);
-				System.out.println("Day "+day+": Employee present for Part-time and wage for the day: $"+dailywage );
-				
-			}
-			break;
-			
-			case 0:
-				//System.out.println("Employee is Absent.");
-				System.out.println("Day "+day+": Employee Absent and wage for the day: $0" );
-				
+				switch(attendence)
+				{
+				case 1:
+				{
+					workedhours = full_day_hour;
+					dailywage = calculateDailyWage(workedhours);
+					System.out.println("\tDay "+totalWorkingDays+": Employee present for Full-time and wage for the day: $"+dailywage );
+					
+				}
 				break;
+				
+				case 2:
+				{
+					workedhours = part_time_hour;
+					dailywage = calculateDailyWage(workedhours);
+					System.out.println("\tDay "+totalWorkingDays+": Employee present for Part-time and wage for the day: $"+dailywage );
+					
+				}
+				break;
+				
+				case 0:
+					//System.out.println("Employee is Absent.");
+					System.out.println("\tDay "+totalWorkingDays+": Employee Absent and wage for the day: $0" );
+					
+					break;
+				}
+				total_wage += dailywage;
+				totalWorkingHours += workedhours; 
 			}
-			total_wage += dailywage;
-		}
+		
 		
 		System.out.println();
-		System.out.println("Total wage of Employee for one month: $"+total_wage);
+		System.out.println("\tTotal wage of Employee for one month: $"+total_wage);
+		System.out.println("\tTotal Working Days: "+ totalWorkingDays);
+		System.out.println("\tTotal Working Hour: "+totalWorkingHours);
 		
 	}
 
