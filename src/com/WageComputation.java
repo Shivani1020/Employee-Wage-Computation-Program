@@ -21,26 +21,31 @@ public class WageComputation {
 		System.out.println("--------------------------------------------------------------");
 		System.out.println("~~~~~~~~~Welcome to Employee Wage Computation Program~~~~~~~~~");
 		System.out.println("--------------------------------------------------------------");
-		
+		int dailywage =0;
 		int attendence = getAttendence();  // 2 indicates that either 0 or 1 is generated.
-		 
-		if(attendence == 1)  //  1-> Full time
+		switch(attendence)
+		{
+		case 1:
 		{
 			System.out.println("Employee is Present for Full time.");
-			int dailywage = calculateDailyWage(full_day_hour);
-			System.out.println("Daily wage of Full Time Employee: "+dailywage);
+			dailywage = calculateDailyWage(full_day_hour);
+			
 		}
-		else if(attendence == 2)  //2-> Part time
+		break;
+		
+		case 2:
 		{
 			System.out.println("Employee is present for Part time");
-			int dailywage = calculateDailyWage(part_time_wage);
-			System.out.println("Daily wage of Part time Employee: "+dailywage);
+			dailywage = calculateDailyWage(part_time_wage);
 		}
-		else   // 0-> Absent
-		{
+		break;
+		
+		case 0:
 			System.out.println("Employee is Absent.");
+			break;
 		}
 		
+		System.out.println("Daily wage of Employee: $"+dailywage);
 		
 	}
 
