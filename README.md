@@ -1,7 +1,7 @@
-Final Result is
 	--------------------------------------------------------------
 	~~~~~~~~~Welcome to Employee Wage Computation Program~~~~~~~~~
 	--------------------------------------------------------------
+
 		Wage Computation For Company Abc
 	--------------------------------------------------------------
 	Day 1: Employee present for Part-time and wage for the day: $80
