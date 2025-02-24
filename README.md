@@ -2,7 +2,7 @@
 	~~~~~~~~~Welcome to Employee Wage Computation Program~~~~~~~~~
 	--------------------------------------------------------------
 
-		Wage Computation For Company Abc
+		Wage Computation For Abc Company
 	--------------------------------------------------------------
 	Day 1: Employee present for Part-time and wage for the day: $80
 	Day 2: Employee present for Full-time and wage for the day: $160
